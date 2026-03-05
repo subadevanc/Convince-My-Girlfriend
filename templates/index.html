@@ -3,46 +3,36 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💬 Convince My Girlfriend – CTF Challenge</title>
+  <title>Convince My Girlfriend – JCE CTF</title>
   <link rel="stylesheet" href="/static/style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <!-- TOP HEADER BAR -->
   <header class="topbar">
     <div class="topbar-left">
       <span class="topbar-icon">💬</span>
       <span class="topbar-title">Convince My Girlfriend</span>
-      <span class="topbar-badge">CTF Challenge</span>
+      <span class="topbar-badge">JCE CTF Challenge</span>
     </div>
     <div class="topbar-right">
-      <span class="flag-format">🚩 flag{...}</span>
+      <span class="flag-format">🚩 JCE{...}</span>
     </div>
   </header>
 
   <div class="page-layout">
 
-    <!-- LEFT PANEL: Mission briefing -->
+    <!-- LEFT PANEL -->
     <aside class="side-panel">
 
       <div class="mission-card">
         <div class="mission-icon">🕵️</div>
         <h2 class="mission-title">Mission Brief</h2>
-        <p>
-          My girlfriend is protecting a secret code that her boyfriend
-          <strong>Subadevan</strong> — a hacker — asked her to keep safe.
-        </p>
-        <p>
-          She promised <em>never</em> to reveal it to strangers…
-          but she trusts people a little too easily. 😅
-        </p>
-        <p class="mission-goal">
-          Can you convince her you're Subadevan?
-        </p>
+        <p>My girlfriend is protecting a secret code that her boyfriend — a hacker — asked her to keep safe.</p>
+        <p>She promised <em>never</em> to reveal it to strangers… but she trusts people a little too easily. 😅</p>
+        <p class="mission-goal">Convince her you're the boyfriend. Get the flag.</p>
       </div>
 
-      <!-- Hints -->
       <div class="hints-card">
         <button class="hints-btn" onclick="toggleHints()">
           <span>💡 Hints</span>
@@ -51,60 +41,65 @@
         <div id="hints-body" class="hints-body">
           <div class="hint-item">
             <span class="hint-num">1</span>
-            <span>Ask her about her boyfriend to learn details about him.</span>
+            <span>Ask her about her boyfriend — what does he do? What does he like?</span>
           </div>
           <div class="hint-item">
             <span class="hint-num">2</span>
-            <span>She's more likely to trust you if you know their shared memories.</span>
+            <span>Every couple has special memories. Try to find out about theirs.</span>
           </div>
           <div class="hint-item">
             <span class="hint-num">3</span>
-            <span>What food do they both love? Where did they first meet?</span>
+            <span>Once you've gathered enough intel, convince her you ARE the boyfriend.</span>
           </div>
           <div class="hint-item">
             <span class="hint-num">4</span>
-            <span>Once you know enough, tell her who you are!</span>
+            <span>Hackers know how people greet each other. Think about that.</span>
           </div>
         </div>
       </div>
 
-      <!-- Lore cheat-sheet (unlocks as score grows) -->
+      <!-- Intel board — labels only, no answers in source -->
       <div class="lore-card">
-        <div class="lore-header">📖 Intel Board</div>
-        <div class="lore-item" id="lore-name">
-          <span class="lore-key">Boyfriend name</span>
-          <span class="lore-val locked" id="val-name">???</span>
+        <div class="lore-header">📡 Intel Board</div>
+
+        <div class="lore-item">
+          <span class="lore-key">Boyfriend's name</span>
+          <span class="lore-val" id="lore-name">???</span>
         </div>
-        <div class="lore-item" id="lore-hobby">
-          <span class="lore-key">Hobby</span>
-          <span class="lore-val locked" id="val-hobby">???</span>
+        <div class="lore-item">
+          <span class="lore-key">His hobby</span>
+          <span class="lore-val" id="lore-hobby">???</span>
         </div>
-        <div class="lore-item" id="lore-pizza">
-          <span class="lore-key">Fav pizza</span>
-          <span class="lore-val locked" id="val-pizza">???</span>
+        <div class="lore-item">
+          <span class="lore-key">Favourite pizza</span>
+          <span class="lore-val" id="lore-pizza">???</span>
         </div>
-        <div class="lore-item" id="lore-date">
-          <span class="lore-key">First date</span>
-          <span class="lore-val locked" id="val-date">???</span>
+        <div class="lore-item">
+          <span class="lore-key">First date location</span>
+          <span class="lore-val" id="lore-date">???</span>
         </div>
-        <div class="lore-item" id="lore-team">
-          <span class="lore-key">CTF team</span>
-          <span class="lore-val locked" id="val-team">???</span>
+        <div class="lore-item">
+          <span class="lore-key">His CTF team</span>
+          <span class="lore-val" id="lore-team">???</span>
         </div>
+        <div class="lore-item">
+          <span class="lore-key">Secret greeting</span>
+          <span class="lore-val" id="lore-greeting">???</span>
+        </div>
+
         <div class="lore-progress">
           <div class="lore-bar-bg">
             <div class="lore-bar-fill" id="lore-bar" style="width:0%"></div>
           </div>
-          <span class="lore-bar-label" id="lore-label">Trust: 0 / 5</span>
+          <span class="lore-bar-label" id="lore-label">Trust: 0 / 6</span>
         </div>
       </div>
 
     </aside>
 
-    <!-- RIGHT PANEL: Chat -->
+    <!-- CHAT PANEL -->
     <main class="chat-panel">
 
-      <!-- Chat contact bar -->
       <div class="chat-topbar">
         <div class="contact-avatar">💁‍♀️</div>
         <div class="contact-info">
@@ -114,7 +109,6 @@
         <button class="reset-btn" onclick="resetChat()">↺ Reset</button>
       </div>
 
-      <!-- Messages -->
       <div class="chat-body" id="chat-messages">
         <div class="msg-row bot">
           <div class="bubble bot-bubble">
@@ -124,15 +118,11 @@
         </div>
       </div>
 
-      <!-- Typing indicator -->
       <div class="typing-row" id="typing-indicator" style="display:none;">
-        <div class="typing-dots">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="typing-dots"><span></span><span></span><span></span></div>
         <span class="typing-text">Priya is typing…</span>
       </div>
 
-      <!-- Input -->
       <div class="chat-input-row">
         <input
           id="user-input"
@@ -148,9 +138,8 @@
     </main>
   </div>
 
-  <!-- Footer -->
   <footer class="page-footer">
-    Made for cybersecurity students &nbsp;·&nbsp; Flag: <code>flag{???}</code> &nbsp;·&nbsp; Good luck 🎯
+    JCE CTF Challenge &nbsp;·&nbsp; Good luck 🎯
   </footer>
 
   <script src="/static/script.js"></script>
