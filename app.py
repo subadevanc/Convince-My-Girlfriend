@@ -34,7 +34,7 @@ LORE = {
     "greeting":       ["hey babe"],
     "pizza":          ["pepperoni"],
     "first_date":     ["hackathon", "hacking event"],
-    "ctf_team":       ["nullbytes", "null bytes", "nullbyte"],
+    "ctf_team":       ["flaggers united", "Flaggers United", "nullbyte"],
     "hobby":          ["hacker", "hacking", "ctf player"],
 }
 
